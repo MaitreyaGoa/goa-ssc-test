@@ -74,9 +74,7 @@ body {
 .admin-link:hover { opacity: 1; }
 
 /* ── PAGES ── */
-.page { flex: 1; display: none; padding: 32px 16px 48px; }
-.page.active { display: block; }
-.hidden { display: none !important; }
+.page { flex: 1; padding: 32px 16px 48px; }
 
 /* ── LOGIN ── */
 .login-card {
@@ -283,7 +281,7 @@ body {
 .section-btn:hover { background: #dbeafe; }
 
 /* ── RESULT ── */
-#resultPage { display: none; }
+/* #resultPage display controlled by JS */
 .result-card {
   max-width: 520px;
   margin: 0 auto;
@@ -337,7 +335,7 @@ body {
 .result-card .btn-outline { width: 100%; }
 
 /* ── ANSWER REVIEW ── */
-#answerPage { display: none; }
+/* #answerPage display controlled by JS */
 .answer-header {
   max-width: 820px;
   margin: 0 auto 20px;
@@ -366,7 +364,7 @@ body {
 .answer-detail .wrong-ans { color: var(--red); }
 
 /* ── ADMIN ── */
-#adminPage { display: none; }
+/* #adminPage display controlled by JS */
 .admin-panel { max-width: 900px; margin: 0 auto; }
 .admin-panel h2 { font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 8px; }
 .admin-note { color: var(--muted); font-size: 0.85rem; margin-bottom: 20px; }

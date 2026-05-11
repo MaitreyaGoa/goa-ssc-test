@@ -21,10 +21,10 @@
   </header>
 
   <!-- LOGIN PAGE -->
-  <section id="loginPage" class="page active">
+  <section id="loginPage" class="page">
     <div class="card login-card">
       <h2 class="card-title">Student Login</h2>
-      <p class="card-subtitle">GOA SSC PC Mock Test 3 &mdash; Section: 50 Marks</p>
+      <p class="card-subtitle">GOA SSC PC Mock Test 3 &mdash; Total: 50 Marks</p>
       <div class="form-group">
         <label for="studentName">Full Name</label>
         <input type="text" id="studentName" placeholder="Enter your full name" autocomplete="off" />
@@ -34,12 +34,12 @@
         <input type="password" id="studentPassword" placeholder="Enter password" />
       </div>
       <button class="btn btn-primary" onclick="login()">Start Test</button>
-      <p id="loginError" class="error-msg hidden">❌ Invalid credentials. Password is 1234.</p>
+      <p id="loginError" class="error-msg" style="display:none;">❌ Invalid credentials. Password is 1234.</p>
     </div>
   </section>
 
   <!-- TEST PAGE -->
-  <section id="testPage" class="page hidden">
+  <section id="testPage" class="page" style="display:none;">
     <div class="test-topbar">
       <div class="test-info">
         <span id="topStudentName"></span>
@@ -52,23 +52,21 @@
     </div>
 
     <div class="test-layout">
-      <!-- Question Panel -->
       <div class="question-panel">
         <div class="section-badge" id="sectionBadge">Section A – English</div>
         <div id="questionBox" class="question-box"></div>
         <div class="nav-btns">
-          <button class="btn btn-outline" onclick="prevQuestion()" id="prevBtn">◀ Previous</button>
-          <button class="btn btn-outline" onclick="nextQuestion()" id="nextBtn">Next ▶</button>
+          <button class="btn btn-outline" onclick="prevQuestion()" id="prevBtn">&#9664; Previous</button>
+          <button class="btn btn-outline" onclick="nextQuestion()" id="nextBtn">Next &#9654;</button>
         </div>
         <button class="btn btn-danger submit-btn" onclick="confirmSubmit()">Submit Test</button>
       </div>
 
-      <!-- Question Palette -->
       <div class="palette-panel">
         <h3 class="palette-title">Question Palette</h3>
         <div class="palette-legend">
-          <span class="legend-dot dot-answered"></span> Answered
-          <span class="legend-dot dot-unanswered"></span> Not Answered
+          <span class="legend-dot dot-answered"></span> Answered &nbsp;
+          <span class="legend-dot dot-unanswered"></span> Not Answered &nbsp;
           <span class="legend-dot dot-current"></span> Current
         </div>
         <div id="palette" class="palette-grid"></div>
@@ -82,9 +80,9 @@
   </section>
 
   <!-- RESULT PAGE -->
-  <section id="resultPage" class="page hidden">
+  <section id="resultPage" class="page" style="display:none;">
     <div class="result-card">
-      <div class="result-icon">🏆</div>
+      <div class="result-icon">&#127942;</div>
       <h2 id="resultName" class="result-name"></h2>
       <p class="result-label">Your Score</p>
       <div class="score-display">
@@ -95,53 +93,53 @@
       <div class="score-breakdown">
         <div class="breakdown-item">
           <span class="bd-label">English</span>
-          <span id="engScore" class="bd-val"></span>/30
+          <span id="engScore" class="bd-val"></span><span style="font-size:.8rem;color:#6b7280;">/30</span>
         </div>
         <div class="breakdown-item">
           <span class="bd-label">Maths</span>
-          <span id="mathScore" class="bd-val"></span>/10
+          <span id="mathScore" class="bd-val"></span><span style="font-size:.8rem;color:#6b7280;">/10</span>
         </div>
         <div class="breakdown-item">
           <span class="bd-label">Reasoning</span>
-          <span id="reasonScore" class="bd-val"></span>/10
+          <span id="reasonScore" class="bd-val"></span><span style="font-size:.8rem;color:#6b7280;">/10</span>
         </div>
       </div>
       <div id="rankBadge" class="rank-badge"></div>
       <button class="btn btn-primary" onclick="viewAnswers()">View Answer Key</button>
-      <button class="btn btn-outline" onclick="restartTest()">New Attempt</button>
+      <button class="btn btn-outline" style="margin-top:10px;width:100%;" onclick="restartTest()">New Attempt</button>
     </div>
   </section>
 
   <!-- ANSWER REVIEW PAGE -->
-  <section id="answerPage" class="page hidden">
+  <section id="answerPage" class="page" style="display:none;">
     <div class="answer-header">
       <h2>Answer Key Review</h2>
-      <button class="btn btn-outline" onclick="showPage('resultPage')">← Back to Result</button>
+      <button class="btn btn-outline" onclick="showPage('resultPage')">&#8592; Back to Result</button>
     </div>
     <div id="answerList" class="answer-list"></div>
   </section>
 
-  <!-- ADMIN MERIT LIST PAGE -->
-  <section id="adminPage" class="page hidden">
+  <!-- ADMIN PAGE -->
+  <section id="adminPage" class="page" style="display:none;">
     <div class="admin-panel">
       <h2>Admin Panel – Merit List</h2>
-      <p class="admin-note">Password protected. For Academic Coordinator use only.</p>
+      <p class="admin-note">For Academic Coordinator use only.</p>
       <div id="meritTableWrap"></div>
-      <button class="btn btn-outline" onclick="exportCSV()">📥 Export CSV</button>
-      <button class="btn btn-outline" onclick="showPage('loginPage')">← Back</button>
+      <button class="btn btn-outline" onclick="exportCSV()">&#128229; Export CSV</button>
+      <button class="btn btn-outline" onclick="showPage('loginPage')" style="margin-left:10px;">&#8592; Back</button>
     </div>
   </section>
 
-  <!-- ADMIN LOGIN MODAL -->
-  <div id="adminModal" class="modal hidden">
+  <!-- ADMIN MODAL -->
+  <div id="adminModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;align-items:center;justify-content:center;">
     <div class="modal-box">
       <h3>Admin Login</h3>
-      <input type="password" id="adminPass" placeholder="Admin password" />
-      <div class="modal-btns">
-        <button class="btn btn-primary" onclick="adminLogin()">Login</button>
-        <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <input type="password" id="adminPass" placeholder="Admin password" style="width:100%;padding:10px 14px;border:2px solid #dde1ea;border-radius:8px;font-size:1rem;margin-bottom:14px;outline:none;font-family:inherit;" />
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-primary" style="flex:1;" onclick="adminLogin()">Login</button>
+        <button class="btn btn-outline" style="flex:1;" onclick="closeModal()">Cancel</button>
       </div>
-      <p id="adminError" class="error-msg hidden">❌ Wrong password</p>
+      <p id="adminError" style="display:none;color:#dc2626;font-size:.85rem;margin-top:10px;">&#10060; Wrong password</p>
     </div>
   </div>
 
@@ -150,11 +148,11 @@
     <div class="footer-inner">
       <span class="footer-name">Maitreya Hinde</span>
       <span class="footer-sep">|</span>
-      <span class="footer-phone">📞 7358425108</span>
+      <span class="footer-phone">&#128222; 7358425108</span>
       <span class="footer-sep">|</span>
       <span class="footer-role">Academic Coordinator</span>
-      <span class="footer-sep admin-link-sep">·</span>
-      <a class="admin-link" onclick="openAdminModal()">Admin</a>
+      <span class="footer-sep">·</span>
+      <a class="admin-link" onclick="openAdminModal()" href="javascript:void(0)">Admin</a>
     </div>
   </footer>
 
