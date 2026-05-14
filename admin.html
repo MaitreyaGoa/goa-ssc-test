@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel – Dr Shetye Academic Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-logo">🎓</div>
+      <div class="header-text">
+        <h1 class="header-title">Dr Shetye Academic Program</h1>
+        <p class="header-sub">Admin Panel – Merit Lists</p>
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:1100px;margin:0 auto;padding:28px 16px 60px;">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+      <div>
+        <h2 style="font-family:'Playfair Display',serif;color:#0d2b55;font-size:1.6rem;">Central Merit Lists</h2>
+        <p style="color:#6b7280;font-size:.88rem;">All student results stored centrally per test</p>
+      </div>
+      <a href="index.html" class="btn btn-outline" style="text-decoration:none;">← Back to Home</a>
+    </div>
+
+    <!-- Tab buttons for each test -->
+    <div class="admin-tabs" id="adminTabs"></div>
+
+    <!-- Results panel -->
+    <div class="admin-results-panel" id="adminResultsPanel">
+      <p style="color:#6b7280;text-align:center;padding:40px;">Select a test above to view results.</p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-name">Maitreya Hinde</span>
+      <span class="footer-sep">|</span>
+      <span class="footer-phone">📞 7358425108</span>
+      <span class="footer-sep">|</span>
+      <span class="footer-role">Academic Coordinator</span>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GOA SSC PC Test – Dr Shetye Academic Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-logo">🎓</div>
+      <div class="header-text">
+        <h1 class="header-title">Dr Shetye Academic Program</h1>
+        <p class="header-sub">Excellence in Competitive Exam Preparation</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGIN PAGE -->
+  <section id="loginPage">
+    <div class="card login-card">
+      <a href="index.html" class="back-link">← All Tests</a>
+      <div id="loginTestBadge" class="login-test-badge"></div>
+      <h2 class="card-title">Student Login</h2>
+      <p id="loginSubtitle" class="card-subtitle"></p>
+      <div class="form-group">
+        <label for="studentName">Full Name</label>
+        <input type="text" id="studentName" placeholder="Enter your full name" autocomplete="off"/>
+      </div>
+      <div class="form-group">
+        <label for="studentPassword">Test Password</label>
+        <input type="password" id="studentPassword" placeholder="Enter test password"/>
+      </div>
+      <button class="btn btn-primary" onclick="login()">Start Test</button>
+      <p id="loginError" class="error-msg" style="display:none;"></p>
+    </div>
+  </section>
+
+  <!-- TEST PAGE -->
+  <section id="testPage" style="display:none;">
+    <div class="test-topbar">
+      <div class="test-info">
+        <span id="topStudentName"></span>
+        <span class="test-name" id="topTestName"></span>
+      </div>
+      <div class="timer-box">
+        <span class="timer-label">Time Left</span>
+        <span id="timer" class="timer-digits">60:00</span>
+      </div>
+    </div>
+
+    <div class="test-layout">
+      <div class="question-panel">
+        <div class="section-badge" id="sectionBadge"></div>
+        <div id="questionBox" class="question-box"></div>
+        <div class="nav-btns">
+          <button class="btn btn-outline" onclick="prevQuestion()" id="prevBtn">◀ Previous</button>
+          <button class="btn btn-outline" onclick="nextQuestion()" id="nextBtn">Next ▶</button>
+        </div>
+        <button class="btn btn-danger submit-btn" onclick="confirmSubmit()">Submit Test</button>
+      </div>
+
+      <div class="palette-panel">
+        <h3 class="palette-title">Question Palette</h3>
+        <div class="palette-legend">
+          <span class="legend-dot dot-answered"></span> Answered &nbsp;
+          <span class="legend-dot dot-unanswered"></span> Not Answered &nbsp;
+          <span class="legend-dot dot-current"></span> Current
+        </div>
+        <div id="palette" class="palette-grid"></div>
+        <div class="section-links" id="sectionLinks"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT PAGE -->
+  <section id="resultPage" style="display:none;">
+    <div class="result-card">
+      <div class="result-icon">🏆</div>
+      <h2 id="resultName" class="result-name"></h2>
+      <p id="resultTestLabel" class="result-label"></p>
+      <div class="score-display">
+        <span id="totalScore" class="score-big"></span>
+        <span class="score-sep">/</span>
+        <span id="totalMarksDisplay" class="score-total">50</span>
+      </div>
+      <div class="score-breakdown" id="scoreBreakdown"></div>
+      <div id="rankBadge" class="rank-badge"></div>
+      <div id="savingStatus" style="display:none;padding:10px 16px;border-radius:8px;font-size:.88rem;font-weight:600;margin-bottom:14px;text-align:center;"></div>
+      <button class="btn btn-primary" onclick="viewAnswers()">View Answer Key</button>
+      <button class="btn btn-outline" style="margin-top:10px;width:100%;" onclick="goHome()">← Back to Tests</button>
+    </div>
+  </section>
+
+  <!-- ANSWER REVIEW PAGE -->
+  <section id="answerPage" style="display:none;">
+    <div class="answer-header">
+      <h2>Answer Key Review</h2>
+      <button class="btn btn-outline" onclick="showPage('resultPage')">← Back to Result</button>
+    </div>
+    <div id="answerList" class="answer-list"></div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-name">Maitreya Hinde</span>
+      <span class="footer-sep">|</span>
+      <span class="footer-phone">📞 7358425108</span>
+      <span class="footer-sep">|</span>
+      <span class="footer-role">Academic Coordinator</span>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="test.js"></script>
+  <!-- Question files loaded dynamically by test.js -->
+</body>
+</html>

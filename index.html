@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GOA SSC PC Mock Test 3 – Dr Shetye Academic Program</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr Shetye Academic Program – GOA SSC PC Tests</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
@@ -20,135 +20,24 @@
     </div>
   </header>
 
-  <!-- LOGIN PAGE -->
-  <section id="loginPage" class="page">
-    <div class="card login-card">
-      <h2 class="card-title">Student Login</h2>
-      <p class="card-subtitle">GOA SSC PC Mock Test 3 &mdash; Total: 50 Marks</p>
-      <div class="form-group">
-        <label for="studentName">Full Name</label>
-        <input type="text" id="studentName" placeholder="Enter your full name" autocomplete="off" />
-      </div>
-      <div class="form-group">
-        <label for="studentPassword">Password</label>
-        <input type="password" id="studentPassword" placeholder="Enter password" />
-      </div>
-      <button class="btn btn-primary" onclick="login()">Start Test</button>
-      <p id="loginError" class="error-msg" style="display:none;">❌ Invalid credentials. Password is 1234.</p>
-    </div>
-  </section>
-
-  <!-- TEST PAGE -->
-  <section id="testPage" class="page" style="display:none;">
-    <div class="test-topbar">
-      <div class="test-info">
-        <span id="topStudentName"></span>
-        <span class="test-name">GOA SSC PC Mock Test 3</span>
-      </div>
-      <div class="timer-box">
-        <span class="timer-label">Time Left</span>
-        <span id="timer" class="timer-digits">60:00</span>
-      </div>
+  <!-- HOME PAGE -->
+  <main class="home-main">
+    <div class="home-hero">
+      <h2 class="hero-title">GOA SSC Police Constable</h2>
+      <p class="hero-sub">Mock Test Series — Select a test to begin</p>
     </div>
 
-    <div class="test-layout">
-      <div class="question-panel">
-        <div class="section-badge" id="sectionBadge">Section A – English</div>
-        <div id="questionBox" class="question-box"></div>
-        <div class="nav-btns">
-          <button class="btn btn-outline" onclick="prevQuestion()" id="prevBtn">&#9664; Previous</button>
-          <button class="btn btn-outline" onclick="nextQuestion()" id="nextBtn">Next &#9654;</button>
-        </div>
-        <button class="btn btn-danger submit-btn" onclick="confirmSubmit()">Submit Test</button>
-      </div>
-
-      <div class="palette-panel">
-        <h3 class="palette-title">Question Palette</h3>
-        <div class="palette-legend">
-          <span class="legend-dot dot-answered"></span> Answered &nbsp;
-          <span class="legend-dot dot-unanswered"></span> Not Answered &nbsp;
-          <span class="legend-dot dot-current"></span> Current
-        </div>
-        <div id="palette" class="palette-grid"></div>
-        <div class="section-links">
-          <button class="section-btn" onclick="goToSection(0)">English (1–30)</button>
-          <button class="section-btn" onclick="goToSection(30)">Maths (31–40)</button>
-          <button class="section-btn" onclick="goToSection(40)">Reasoning (41–50)</button>
-        </div>
-      </div>
+    <div class="tests-grid" id="testsGrid">
+      <!-- Cards injected by home.js -->
     </div>
-  </section>
-
-  <!-- RESULT PAGE -->
-  <section id="resultPage" class="page" style="display:none;">
-    <div class="result-card">
-      <div class="result-icon">&#127942;</div>
-      <h2 id="resultName" class="result-name"></h2>
-      <p class="result-label">Your Score</p>
-      <div class="score-display">
-        <span id="totalScore" class="score-big"></span>
-        <span class="score-sep">/</span>
-        <span class="score-total">50</span>
-      </div>
-      <div class="score-breakdown">
-        <div class="breakdown-item">
-          <span class="bd-label">English</span>
-          <span id="engScore" class="bd-val"></span><span style="font-size:.8rem;color:#6b7280;">/30</span>
-        </div>
-        <div class="breakdown-item">
-          <span class="bd-label">Maths</span>
-          <span id="mathScore" class="bd-val"></span><span style="font-size:.8rem;color:#6b7280;">/10</span>
-        </div>
-        <div class="breakdown-item">
-          <span class="bd-label">Reasoning</span>
-          <span id="reasonScore" class="bd-val"></span><span style="font-size:.8rem;color:#6b7280;">/10</span>
-        </div>
-      </div>
-      <div id="rankBadge" class="rank-badge"></div>
-      <button class="btn btn-primary" onclick="viewAnswers()">View Answer Key</button>
-      <button class="btn btn-outline" style="margin-top:10px;width:100%;" onclick="restartTest()">New Attempt</button>
-    </div>
-  </section>
-
-  <!-- ANSWER REVIEW PAGE -->
-  <section id="answerPage" class="page" style="display:none;">
-    <div class="answer-header">
-      <h2>Answer Key Review</h2>
-      <button class="btn btn-outline" onclick="showPage('resultPage')">&#8592; Back to Result</button>
-    </div>
-    <div id="answerList" class="answer-list"></div>
-  </section>
-
-  <!-- ADMIN PAGE -->
-  <section id="adminPage" class="page" style="display:none;">
-    <div class="admin-panel">
-      <h2>Admin Panel – Merit List</h2>
-      <p class="admin-note">For Academic Coordinator use only.</p>
-      <div id="meritTableWrap"></div>
-      <button class="btn btn-outline" onclick="exportCSV()">&#128229; Export CSV</button>
-      <button class="btn btn-outline" onclick="showPage('loginPage')" style="margin-left:10px;">&#8592; Back</button>
-    </div>
-  </section>
-
-  <!-- ADMIN MODAL -->
-  <div id="adminModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;align-items:center;justify-content:center;">
-    <div class="modal-box">
-      <h3>Admin Login</h3>
-      <input type="password" id="adminPass" placeholder="Admin password" style="width:100%;padding:10px 14px;border:2px solid #dde1ea;border-radius:8px;font-size:1rem;margin-bottom:14px;outline:none;font-family:inherit;" />
-      <div style="display:flex;gap:10px;">
-        <button class="btn btn-primary" style="flex:1;" onclick="adminLogin()">Login</button>
-        <button class="btn btn-outline" style="flex:1;" onclick="closeModal()">Cancel</button>
-      </div>
-      <p id="adminError" style="display:none;color:#dc2626;font-size:.85rem;margin-top:10px;">&#10060; Wrong password</p>
-    </div>
-  </div>
+  </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
       <span class="footer-name">Maitreya Hinde</span>
       <span class="footer-sep">|</span>
-      <span class="footer-phone">&#128222; 7358425108</span>
+      <span class="footer-phone">📞 7358425108</span>
       <span class="footer-sep">|</span>
       <span class="footer-role">Academic Coordinator</span>
       <span class="footer-sep">·</span>
@@ -156,7 +45,21 @@
     </div>
   </footer>
 
-  <script src="questions.js"></script>
-  <script src="app.js"></script>
+  <!-- ADMIN MODAL -->
+  <div id="adminModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:300;align-items:center;justify-content:center;">
+    <div class="modal-box">
+      <h3>Admin Login</h3>
+      <p style="font-size:.85rem;color:#6b7280;margin-bottom:14px;">View all test results &amp; merit lists</p>
+      <input type="password" id="adminPass" placeholder="Admin password"/>
+      <div style="display:flex;gap:10px;margin-top:4px;">
+        <button class="btn btn-primary" style="flex:1;" onclick="adminLogin()">Login</button>
+        <button class="btn btn-outline" style="flex:1;" onclick="closeModal()">Cancel</button>
+      </div>
+      <p id="adminError" style="display:none;color:#dc2626;font-size:.85rem;margin-top:10px;">❌ Wrong password</p>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="home.js"></script>
 </body>
 </html>
